@@ -8,21 +8,21 @@ public class Radio {
     private int currentChannel;
     private int currentVolume;
 
-    public void increaseCurrentVolume(int currentVolume){
+    public void increaseCurrentVolume(){
         if (currentVolume == volumeMax){
             return;
         }
         this.currentVolume ++;
     }
 
-    public void decreaseCurrentVolume(int currentVolume){
+    public void decreaseCurrentVolume(){
         if (currentVolume == volumeMin){
             return;
         }
         this.currentVolume --;
     }
 
-    public void nextChannel(int currentChannel){
+    public void nextChannel(){
         if (currentChannel == channelMax){
             this.currentChannel = 0;
             return;
@@ -31,7 +31,7 @@ public class Radio {
 
     }
 
-    public void previousChannel(int currentChannel){
+    public void previousChannel(){
         if (currentChannel == channelMin){
             this.currentChannel = 9;
             return;
