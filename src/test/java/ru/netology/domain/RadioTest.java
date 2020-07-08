@@ -27,17 +27,16 @@ public class RadioTest {
 
     @Test
     public void shouldSetPreviousAfterMinChannel(){
-
+        Radio radio = new Radio(5);
         radio.setCurrentChannel(0);
         radio.previousChannel();
-        assertEquals(9,radio.getCurrentChannel());
+        assertEquals(5,radio.getCurrentChannel());
 
     }
 
     @Test
     public void shouldSetNextAfterMaxChannel(){
-
-        radio.setCurrentChannel(9);
+        Radio radio = new Radio(8, 8);
         radio.nextChannel();
         assertEquals(0,radio.getCurrentChannel());
 
@@ -46,18 +45,18 @@ public class RadioTest {
     @Test
     public void shouldIncreaseCurrentVolume(){
 
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(50);
         radio.increaseCurrentVolume();
-        assertEquals(6,radio.getCurrentVolume());
+        assertEquals(51,radio.getCurrentVolume());
 
     }
 
     @Test
     public void shouldDecreaseCurrentVolume(){
 
-        radio.setCurrentVolume(7);
+        radio.setCurrentVolume(50);
         radio.decreaseCurrentVolume();
-        assertEquals(6,radio.getCurrentVolume());
+        assertEquals(49,radio.getCurrentVolume());
 
     }
 
@@ -73,26 +72,26 @@ public class RadioTest {
     @Test
     public void shouldIncreaseMaxVolume(){
 
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseCurrentVolume();
-        assertEquals(10,radio.getCurrentVolume());
+        assertEquals(100,radio.getCurrentVolume());
 
     }
 
     @Test
     public void shouldIncreaseOverMaxVolume() {
 
-        radio.setCurrentVolume(15);
+        radio.setCurrentVolume(120);
         radio.increaseCurrentVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldDecreaseOverMaxVolume(){
 
-        radio.setCurrentVolume(15);
+        radio.setCurrentVolume(112);
         radio.decreaseCurrentVolume();
-        assertEquals(9,radio.getCurrentVolume());
+        assertEquals(99,radio.getCurrentVolume());
 
     }
 
@@ -115,17 +114,17 @@ public class RadioTest {
     }
 
     @Test
-    public void TurnPreviousChannelUnderMinChannel(){
-
+    public void shouldTurnPreviousChannelUnderMinChannel(){
+        Radio radio = new Radio(6);
         radio.setCurrentChannel(-5);
         radio.previousChannel();
-        assertEquals(9,radio.getCurrentChannel());
+        assertEquals(6,radio.getCurrentChannel());
 
     }
 
     @Test
-    public void TurnNextChannelOverMaxChannel(){
-
+    public void shouldTurnNextChannelOverMaxChannel(){
+        Radio radio = new Radio(6);
         radio.setCurrentChannel(11);
         radio.nextChannel();
         assertEquals(0,radio.getCurrentChannel());
@@ -143,25 +142,24 @@ public class RadioTest {
 
     @Test
     public void shouldSetChannelFromRemoteMax (){
+        Radio radio = new Radio(7, 7);
 
-        radio.setCurrentChannel(9);
-        assertEquals(9,radio.getCurrentChannel());
+        assertEquals(7,radio.getCurrentChannel());
 
     }
 
     @Test
     public void shouldSetChannelFromRemoteMin (){
-
-        radio.setCurrentChannel(0);
+        Radio radio = new Radio(0, 0);
         assertEquals(0,radio.getCurrentChannel());
 
     }
 
     @Test
     public void shouldSetChannelFromRemoteOverMax (){
-
-        radio.setCurrentChannel(14);
-        assertEquals(9,radio.getCurrentChannel());
+        Radio radio = new Radio(10);
+        radio.setCurrentChannel(11);
+        assertEquals(10,radio.getCurrentChannel());
 
     }
 
